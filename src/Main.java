@@ -12,6 +12,10 @@ public class Main {
         studentList.add(new DocStudent(789, "Yosemite Sam", Major.PHILOSOPHY, false, "The Art of Dynamite"));
         studentList.add(new BachSciStudent(987, "Jane Doe", Major.FINANCE, false, 2.8));
         studentList.add(new MastersStudent(654, "Pepe LePeu", Major.SCIENCE, true, "Racy Spices"));
+        studentList.add(StudentFactory.newStudent(StudentFactory.StudentType.BACHELOR_ARTS, 823, "Miss Piggy",
+                Major.PHILOSOPHY, true, 3.7));
+        studentList.add(StudentFactory.newGradStudent(StudentFactory.GraduateType.PHD, 999, "Albert Einstein",
+                Major.SCIENCE, false, "Human Genome"));
 
         System.out.println("Tuition:");
 
