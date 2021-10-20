@@ -34,6 +34,6 @@ public abstract class BachelorStudent extends Student {
 
     @Override
     public void tuition() {
-        System.out.println(name + " pays full tuition.");
+        System.out.println(super.getName() + " pays full tuition.");
     }
 }

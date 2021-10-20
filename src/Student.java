@@ -1,8 +1,12 @@
+import java.util.Comparator;
+
 public abstract class Student implements Comparable<Student> {
     int id;
     String name;
     Major major;
     boolean graduated;
+
+    public static final MajorIDComparator MAJOR_ID_COMPARATOR = new MajorIDComparator();
 
     private static int totalStudents = 0;
 
@@ -72,9 +76,24 @@ public abstract class Student implements Comparable<Student> {
         }
     }
 
+    public int getTotalStudents() {
+        return totalStudents;
+    }
+
     public void register() {
         System.out.println(name + " is registered.");
     }
 
     public abstract void tuition();
+
+    public static class MajorIDComparator implements Comparator<Student> {
+
+        public int compare(Student s1, Student s2) {
+            if (s1.getMajor().compareTo(s2.getMajor()) != 0) {
+                return s1.getMajor().compareTo(s2.getMajor());
+            } else {
+                return (s1.getId() > s2.getId() ? 1: s1.getId() < s2.getId() ? -1 : 0);
+            }
+        }
+    }
 }

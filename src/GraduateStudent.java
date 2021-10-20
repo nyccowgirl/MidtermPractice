@@ -28,4 +28,6 @@ public abstract class GraduateStudent extends Student {
             return false;
         }
     }
+
+    public abstract void work();
 }
