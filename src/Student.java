@@ -1,19 +1,21 @@
 import java.util.Comparator;
 
 public abstract class Student implements Comparable<Student> {
-    int id;
-    String name;
-    Major major;
-    boolean graduated;
+    private int id;
+    private String name;
+    private Major major;
+    private Graduator graduator;
+    private boolean graduated;
 
     public static final MajorIDComparator MAJOR_ID_COMPARATOR = new MajorIDComparator();
 
     private static int totalStudents = 0;
 
-    public Student(int id, String name, Major major, boolean graduated) {
+    public Student(int id, String name, Major major, Graduator graduator, boolean graduated) {
         this.id = id;
         this.name = name;
         this.major = major;
+        this.graduator = graduator;
         this.graduated = graduated;
         totalStudents++;
     }

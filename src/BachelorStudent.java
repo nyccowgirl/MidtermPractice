@@ -1,8 +1,8 @@
 public abstract class BachelorStudent extends Student {
     private double gpa;
 
-    public BachelorStudent(int id, String name, Major major, boolean graduated, double gpa) {
-        super(id, name, major, graduated);
+    public BachelorStudent(int id, String name, Major major, Graduator graduator, boolean graduated, double gpa) {
+        super(id, name, major, graduator, graduated);
 
         if (gpa >= 0 && gpa <= 4) {
             this.gpa = gpa;

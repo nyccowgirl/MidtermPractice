@@ -12,7 +12,8 @@ public class StudentFactory {
         MASTERS, PHD;
     }
 
-    public static Student newStudent(StudentType type, int id, String name, Major major, boolean graduated, Object... other) {
+    public static Student newStudent(StudentType type, int id, String name, Major major, Graduator graduator,
+                                     boolean graduated, Object... other) {
         Student s = null;
         String error = "";
 
@@ -23,7 +24,7 @@ public class StudentFactory {
                 if (type == StudentType.BACHELOR_ARTS) {
                     s = new BachArtsStudent(id, name, major, graduated, gpa);
                 } else if (type == StudentType.BACHELOR_SCIENCE) {
-                    s = new BachSciStudent(id, name, major, graduated, gpa);
+                    s = new BachSciStudent(id, name, major, graduator, graduated, gpa);
                 }
             } else {
                 error = "BachelorStudent requires a double gpa in the constructor. Cannot process " + other[0];
@@ -49,13 +50,14 @@ public class StudentFactory {
         }
     }
 
-    public static BachelorStudent newBachStudent(BachelorType type, int id, String name, Major major, boolean graduated, double gpa) {
+    public static BachelorStudent newBachStudent(BachelorType type, int id, String name, Major major, Graduator graduator,
+                                                 boolean graduated, double gpa) {
         BachelorStudent s = null;
 
         if (type == BachelorType.ARTS) {
             s = new BachArtsStudent(id, name, major, graduated, gpa);
         } else if (type == BachelorType.SCIENCE) {
-            s = new BachSciStudent(id, name, major, graduated, gpa);
+            s = new BachSciStudent(id, name, major, graduator, graduated, gpa);
         }
 
         return s;

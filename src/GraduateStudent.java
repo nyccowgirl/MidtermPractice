@@ -2,7 +2,7 @@ public abstract class GraduateStudent extends Student {
     private String thesis;
 
     public GraduateStudent(int id, String name, Major major, boolean graduated, String thesis) {
-        super(id, name, major, graduated);
+        super(id, name, major, new ThesisGraduator(), graduated);
         this.thesis = thesis;
     }
 
