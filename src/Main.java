@@ -42,5 +42,19 @@ public class Main {
         Collections.sort(studentList, Student.MAJOR_ID_COMPARATOR);
         System.out.println(studentList);
 
+        List<Course> courseList = new ArrayList<>();
+        courseList.add(new Course.Builder("Intro to Japanese", "Inomotosan", "Japanese Workbook 1", 18)
+                .build());
+        courseList.add(new Course.Builder("Sexual Reproduction", "Maddie Minion", "Rebirth", 11)
+                .location("online")
+                .credits(3)
+                .build());
+        courseList.add(new Course.Builder("Masters of Modern Philosophy", "Carl Jung", "Enlightenment",
+                21)
+                .max(22)
+                .build());
+
+        System.out.println("\nCourses:");
+        System.out.println(courseList);
     }
 }
