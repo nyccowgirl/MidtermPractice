@@ -74,11 +74,11 @@ public abstract class Student implements Comparable<Student> {
         if (name.compareTo(obj.getName()) != 0) {
             return name.compareTo(obj.getName());
         } else {
-            return (id > obj.getId() ? 1 : id < obj.getId() ? -1 : 0);
+            return (Integer.compare(id, obj.getId()));
         }
     }
 
-    public int getTotalStudents() {
+    public static int getTotalStudents() {
         return totalStudents;
     }
 
@@ -94,7 +94,7 @@ public abstract class Student implements Comparable<Student> {
             if (s1.getMajor().compareTo(s2.getMajor()) != 0) {
                 return s1.getMajor().compareTo(s2.getMajor());
             } else {
-                return (s1.getId() > s2.getId() ? 1: s1.getId() < s2.getId() ? -1 : 0);
+                return (Integer.compare(s1.getId(), s2.getId()));
             }
         }
     }

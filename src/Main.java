@@ -17,7 +17,9 @@ public class Main {
         studentList.add(StudentFactory.newGradStudent(StudentFactory.GraduateType.PHD, 999, "Albert Einstein",
                 Major.SCIENCE, false, "Human Genome"));
 
-        System.out.println("Tuition:");
+        System.out.println("Total number of students: " + Student.getTotalStudents());
+
+        System.out.println("\nTuition:");
 
         for (Student student: studentList) {
             student.register();
