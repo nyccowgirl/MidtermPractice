@@ -157,6 +157,7 @@ public class Main {
             if (student != null) {
                 student.setGraduated(true);
             } else {
+                s.setGraduated(true);
                 studentMap.put(s.getId(), s);
             }
         }
