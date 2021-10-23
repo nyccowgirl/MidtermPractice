@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -81,7 +78,7 @@ public class Main {
         }
 
         try (PrintWriter fileOut = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")))) {
-            for (Student s: studentList) {
+            for (Student s : studentList) {
                 fileOut.println(s);
             }
             System.out.println("Writing to file is complete.");
@@ -89,6 +86,79 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        System.out.println("\nMap:");
+        System.out.println("\nBy Major:");
+        Map<Major, List<Student>> majorMap = (Map<Major, List<Student>>) createMap("major", studentList);
+        for (Map.Entry<Major, List<Student>> entry : majorMap.entrySet()) {
+            System.out.println(entry.getKey() + " has " + entry.getValue().size()+ " student(s):");
+            for (Student s : entry.getValue()) {
+                System.out.println("\t" + s);
+            }
+        }
 
+        System.out.println("\nBy ID:");
+        Map<Integer, Student> studentMap = (Map<Integer, Student>) createMap("ID", studentList);
+        for (Student s : studentMap.values()) {
+            System.out.println("\t" + s);
+        }
+
+        System.out.println("All philosophy majors graduated!");
+        List<Student> graduatedList = new ArrayList<Student>();
+        for(Student s : studentList) {
+            if(s.getMajor()==Major.PHILOSOPHY) {
+                s.setGraduated(true);
+                System.out.println("\t" + s);
+                graduatedList.add(s);
+            }
+        }
+
+        updateMap(studentMap, graduatedList);
+        for (Student s : studentMap.values()) {
+            System.out.println("\t" + s);
+        }
+    }
+
+    public static Map<?, ?> createMap(String category, List<Student> studentList) {
+
+        if (category.equalsIgnoreCase("major")) {
+            Map<Major, List<Student>> majorMap = new HashMap<>();
+
+            for (Student s : studentList) {
+                Major studentMajor = s.getMajor();
+
+                List<Student> majorList = majorMap.get(studentMajor);
+
+                if (majorList == null) {
+                    majorList = new ArrayList<Student>();
+                    majorList.add(s);
+                    majorMap.put(studentMajor, majorList);
+                } else {
+                    majorList.add(s);
+                }
+            }
+
+            return majorMap;
+        } else {
+            Map<Integer, Student> idMap = new HashMap<>();
+
+            for (Student s : studentList) {
+                int id = s.getId();
+                idMap.put(id, s);
+            }
+
+            return idMap;
+        }
+    }
+
+    public static void updateMap(Map<Integer, Student> studentMap, List<Student> graduatedList) {
+        for (Student s: graduatedList) {
+            Student student = studentMap.get(s.getId());
+
+            if (student != null) {
+                student.setGraduated(true);
+            } else {
+                studentMap.put(s.getId(), s);
+            }
+        }
     }
 }
