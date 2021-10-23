@@ -1,6 +1,8 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -58,5 +60,35 @@ public class Main {
 
         System.out.println("\nCourses:");
         System.out.println(courseList);
+
+        System.out.println("\nReading and Writing Files:");
+        try (Scanner fileScan = new Scanner(new FileReader(new File("test.txt")))) {
+            while (fileScan.hasNextLine()) {
+                String line = fileScan.nextLine();
+
+                Scanner lineScan = new Scanner(line);
+                lineScan.useDelimiter(",");
+                int id = Integer.parseInt(lineScan.next());
+                String name = lineScan.next();
+                Major major = Major.valueOf(lineScan.next());
+                boolean graduated = Boolean.parseBoolean(lineScan.next());
+                String thesis = lineScan.next();
+                studentList.add(new DocStudent(id, name, major, graduated, thesis));
+            }
+            System.out.println("Reading file is complete.");
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try (PrintWriter fileOut = new PrintWriter(new BufferedWriter(new FileWriter("output.txt")))) {
+            for (Student s: studentList) {
+                fileOut.println(s);
+            }
+            System.out.println("Writing to file is complete.");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 }
