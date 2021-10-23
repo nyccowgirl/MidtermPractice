@@ -1,0 +1,10 @@
+ID: 123	Name: Edward Cullen	Major: DRAM	Graduated: no	GPA: 3.8
+ID: 456	Name: James Bond	Major: ENG	Graduated: no	Thesis: Quantum Physics
+ID: 987	Name: Jane Doe	Major: FIN	Graduated: no	GPA: 2.8
+ID: 789	Name: Yosemite Sam	Major: PHIL	Graduated: no	Thesis: The Art of Dynamite
+ID: 823	Name: Miss Piggy	Major: PHIL	Graduated: yes	GPA: 3.7
+ID: 654	Name: Pepe LePeu	Major: SCI	Graduated: yes	Thesis: Racy Spices
+ID: 999	Name: Albert Einstein	Major: SCI	Graduated: no	Thesis: Human Genome
+ID: 645	Name: Tweetie Bird	Major: ACCTG	Graduated: no	Thesis: The Count
+ID: 834	Name: Happy Gilmore	Major: PHIL	Graduated: no	Thesis: The Art of Happiness
+ID: 999	Name: Q	Major: PSYCH	Graduated: yes	Thesis: Narcissistic Love
