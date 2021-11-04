@@ -40,8 +40,25 @@ public class Main {
         Collections.sort(studentList);
         System.out.println(studentList);
         System.out.println("After Sort - with Comparator:");
-        Collections.sort(studentList, Student.MAJOR_ID_COMPARATOR);
+//        Collections.sort(studentList, Student.MAJOR_ID_COMPARATOR);
+        // Using anonymous class
+//        Collections.sort(studentList, new Comparator<Student>() {
+//                    @Override
+//                    public int compare(Student s1, Student s2) {
+//                        if (s1.getMajor().equals(s2.getMajor()))
+//                            return (Integer.compare(s1.getId(), s2.getId()));
+//                        } else {
+//                            return s1.getMajor().compareTo(s2.getMajor());
+//                        }
+//                    }
+//                }
+//        );
+        // Using lambda
+        Collections.sort(studentList,
+                (s1, s2) -> (s1.getMajor().equals(s2.getMajor()) ? Integer.compare(s1.getId(), s2.getId()) :
+                        s1.getMajor().compareTo(s2.getMajor())));
         System.out.println(studentList);
+
 
         List<Course> courseList = new ArrayList<>();
         courseList.add(new Course.Builder("Intro to Japanese", "Inomotosan", "Japanese Workbook 1", 18)

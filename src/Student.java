@@ -91,10 +91,10 @@ public abstract class Student implements Comparable<Student> {
     public static class MajorIDComparator implements Comparator<Student> {
 
         public int compare(Student s1, Student s2) {
-            if (s1.getMajor().compareTo(s2.getMajor()) != 0) {
-                return s1.getMajor().compareTo(s2.getMajor());
-            } else {
+            if (s1.getMajor().equals(s2.getMajor())) {
                 return (Integer.compare(s1.getId(), s2.getId()));
+            } else {
+                return s1.getMajor().compareTo(s2.getMajor());
             }
         }
     }
